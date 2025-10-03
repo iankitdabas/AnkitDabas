@@ -1,43 +1,166 @@
 <!DOCTYPE html>
-
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankit Dabas | Gameplay Programmer</title>
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configure Tailwind for custom colors and font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-primary': '#1A1A1A',
+                        'text-default': '#E0E0E0',
+                        'teal-accent': '#4DD9E5',
+                        'pink-accent': '#FF6699',
+                        'bg-hover': '#2A2A2A',
+                    },
+                    fontFamily: {
+                        // Using Inter as a modern, clean substitute for the font in the image
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/d23daa5a64.js" crossorigin="anonymous"></script>
-    <link href="styles.css" rel="stylesheet">
-    <script defer src="script.js"></script>
-    <title>My Webpage</title>
-    </head>
+        /* Custom style for the profile image border */
+        .profile-border {
+            border: 3px solid var(--tw-colors-bg-hover);
+        }
 
-   <body class = "home-background">
+        /* Ensures the text block is aligned with the top of the image */
+        .bio-text-container {
+            align-self: flex-start;
+        }
 
-    <div class = "Top">
-        <nav class = "navBar">
-            <div class = "navBar-links">
-                <ul>
-                    <li class = "tab"><a href = "index.html">Home</a></li>
-                    <li class = "tab"><a href = "work.html">Work</a></li>
-                    <li class = "tab"><a href = "gallery.html">Gallery</a></li>
-                    <li class = "tab"><a href = "contact.html">Contact</a></li>
-                </ul>
+        /* Custom SVG icons for the links */
+        .icon-hover:hover {
+            color: var(--tw-colors-pink-accent);
+            background-color: transparent !important;
+        }
+    </style>
+</head>
+<body class="bg-bg-primary text-text-default font-sans antialiased">
+
+    <!-- Header & Navigation Bar -->
+    <header class="container mx-auto px-6 lg:px-24 py-6 border-b border-bg-hover">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+            
+            <!-- Left Side: Name and Title -->
+            <div class="mb-4 md:mb-0">
+                <h1 class="text-3xl font-bold text-teal-accent">
+                    Ankit Dabas
+                </h1>
+                <p class="text-lg text-text-default">
+                    Gameplay Programmer
+                </p>
             </div>
-        </nav>
-        <h1 class = "title">ANKIT DABAS</h1>
-    </div>
+            
+            <!-- Right Side: Social Icons and Resume Button -->
+            <div class="flex items-center space-x-4">
+                
+                <!-- Social Icons (Using inline SVG for a crisp look) -->
+                <a href="https://github.com/iankitdabas" target="_blank" class="text-text-default hover:text-pink-accent transition duration-200 icon-hover">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.61V19"></path></svg>
+                </a>
+                <a href="https://linkedin.com/in/iankitdabas" target="_blank" class="text-text-default hover:text-pink-accent transition duration-200 icon-hover">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" target="_blank" class="text-text-default hover:text-pink-accent transition duration-200 icon-hover">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><circle cx="12" cy="12" r="10"></circle><path d="M2.5 17a10 10 0 0 0 19 0"></path><path d="M12 2a10 10 0 0 0 0 20"></path></svg>
+                </a>
+                
+                <!-- Resume Button (Pink Outline, Pink Text) -->
+                <a href="[LINK_TO_YOUR_RESUME.PDF]" target="_blank" class="text-pink-accent border border-pink-accent px-4 py-2 rounded-full font-semibold hover:bg-pink-accent hover:text-bg-primary transition duration-200 text-sm">
+                    Resume ↓
+                </a>
+            </div>
+        </div>
+    </header>
 
-    <div class = "left">
-        <div class = "about-section">
-            <h1 class = "name"></h1>
-        <h3 class = "bio">Gameplay Programmer</h3>
-        <p class = "about-content">I am a self-Taught Gameplay Programmer</p>
-    </div>
-   </div>
-   </body>
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 lg:px-24 py-12">
+        
+        <!-- Hero/About Section -->
+        <section id="about" class="mb-20">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                
+                <!-- Profile Image -->
+                <div class="col-span-1 flex justify-center md:justify-start">
+                    <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden profile-border">
+                        <!-- UPDATED: Using the path to your local image in the 'images' folder -->
+                        <img src="./images/profile.jpeg" onerror="this.onerror=null; this.src='https://placehold.co/224x224/1A1A1A/E0E0E0?text=PROFILE+ERROR';" alt="Profile Photo" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- Biography Text -->
+                <div class="col-span-1 md:col-span-2 bio-text-container">
+                    <p class="text-xl leading-relaxed text-text-default">
+                        Gameplay Programmer specializing in Game mechanics Systems and Core Logic, focused on writing efficient, clean code and tackling new challenges in Game Development.
+                    </p>
+                    <p class="mt-4 text-xl leading-relaxed text-text-default">
+                        I thrive in environments where creativity meets technical rigor, translating complex requirements into simple, maintainable, and high-performance solutions. Let's connect!
+                    </p>
+                </div>
+            </div>
+        </section>
 
+        <!-- Projects Section (Game Programming Example) -->
+        <section id="projects" class="mb-20">
+            <h2 class="text-3xl font-bold text-text-default mb-8 border-b border-bg-hover pb-1 inline-block">
+                Game Programming
+            </h2>
+            
+            <!-- Example Project 1 -->
+            <div class="bg-bg-hover p-6 rounded-lg shadow-xl mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-teal-accent">Top-Down Roguelike Tilemap Engine</h3>
+                    <span class="text-sm text-pink-accent font-semibold">Score: 3508</span>
+                </div>
+                <p class="text-text-default mb-4">
+                    A fully custom, optimized tile-based rendering engine built in C++ and OpenGL. Focused on efficient pathfinding algorithms and complex character state machines.
+                </p>
+                <!-- Mockup of the game screenshot seen in the image -->
+                <div class="w-full h-40 bg-bg-primary border border-gray-700 p-2 overflow-hidden rounded-md">
+                    <!-- Path updated to point to a screenshot in your images folder -->
+                    <div class="w-full h-full bg-[url('./images/tilemap-screenshot.png')] bg-cover bg-center rounded-sm flex items-center justify-center">
+                        <p class="text-teal-accent text-sm opacity-70">
+                            [Replace URL in background image class with your screenshot path]
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Project 2 -->
+            <div class="bg-bg-hover p-6 rounded-lg shadow-xl mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-teal-accent">Real-time Multiplayer Physics Simulator</h3>
+                </div>
+                <p class="text-text-default mb-4">
+                    Developed a low-latency, client-side prediction model using Unity DOTS (Data-Oriented Technology Stack) for a scalable multiplayer environment.
+                </p>
+            </div>
+        </section>
+
+        <!-- More Sections like 'Experience', 'Contact', or 'Art' could go here -->
+
+    </main>
+
+    <!-- Footer Placeholder (Simple, minimal) -->
+    <footer class="container mx-auto px-6 lg:px-24 py-8 text-center text-sm text-text-default border-t border-bg-hover">
+        <p>&copy; <span id="current-year"></span> Ankit Dabas. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Set the current year in the footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
 </html>
