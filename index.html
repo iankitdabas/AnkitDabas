@@ -6,7 +6,7 @@
     <title>Ankit Dabas | Gameplay Programmer</title>
     <!-- Load Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
+    
     <!-- Configure Tailwind for custom colors and font -->
     <script>
         tailwind.config = {
@@ -21,9 +21,9 @@
                     },
                     fontFamily: {
                         // Set Inter for body text (sans)
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'], 
                         // New custom font family for headings
-                        heading: ['Poppins', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'], 
                     },
                 }
             }
@@ -61,13 +61,8 @@
         }
 
         @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -77,7 +72,7 @@
     <!-- Header & Navigation Bar -->
     <header class="container mx-auto px-6 lg:px-24 py-6 border-b border-light-border">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-
+            
             <!-- Left Side: Name and Title (Dark Charcoal text, Poppins font) -->
             <div class="mb-4 md:mb-0">
                 <h1 class="text-3xl font-heading font-bold text-text-default">
@@ -87,10 +82,10 @@
                     Gameplay Programmer
                 </p>
             </div>
-
+            
             <!-- Right Side: Social Icons and Resume Button (Teal Accent) -->
             <div class="flex items-center space-x-4">
-
+                
                 <!-- Social Icons (Default Dark Charcoal, Teal Hover) -->
                 <a href="https://github.com/your-username" target="_blank" class="text-text-default hover:text-teal-accent transition duration-200 icon-hover">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.61V19"></path></svg>
@@ -98,14 +93,14 @@
                 <a href="https://linkedin.com/in/your-profile" target="_blank" class="text-text-default hover:text-teal-accent transition duration-200 icon-hover">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
-
+                
                 <!-- Instagram Icon Added Here -->
                 <a href="https://instagram.com/your-profile" target="_blank" class="text-text-default hover:text-teal-accent transition duration-200 icon-hover">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="w-6 h-6">
-                        <path d="M12 2c-2.71 0-3.05.01-4.12.06-1.07.05-1.79.23-2.42.47-.64.24-1.18.57-1.72 1.1-.54.53-.87 1.08-1.1 1.72-.24.63-.42 1.35-.47 2.42-.05 1.07-.06 1.41-.06 4.12s.01 3.05.06 4.12c.05 1.07.23 1.79.47 2.42.24.64.57 1.18 1.1 1.72.54.54 1.08.87 1.72 1.1.63.24 1.35.42 2.42.47 1.07.05 1.41.06 4.12.06s3.05-.01 4.12-.06c1.07-.05 1.79-.23 2.42-.47.64-.24 1.18-.57 1.72-1.1.54-.53.87-1.08 1.1-1.72.24-.63.42-1.35.47-2.42.05-1.07.06-1.41.06-4.12s-.01-3.05-.06-4.12c-.05-1.07-.23-1.79-.47-2.42-.24-.64-.57-1.18-1.1-1.72-.53-.54-1.08-.87-1.72-1.1-.63-.24-1.35-.42-2.42-.47C15.05 2.01 14.71 2 12 2zm0 1.5c2.68 0 3 .01 4.05.06 1.01.05 1.55.21 1.95.38.41.17.76.4.99.63.23.23.46.58.63.99.17.4.33.94.38 1.95.05 1.05.06 1.37.06 4.05s-.01 3-.06 4.05c-.05 1.01-.21 1.55-.38 1.95-.17.41-.4.76-.63.99-.23.23-.58.46-.99.63-.4.17-.94.33-1.95.38-1.05.05-1.37.06-4.05.06s-3-.01-4.05-.06c-1.01-.05-1.55-.21-1.95-.38-.41-.17-.76-.4-.99-.63-.23-.23-.46-.58-.63-.99-.17-.4-.33-.94-.38-1.95-.05-1.05-.06-1.37-.06-4.05s.01-3 .06-4.05c.05-1.01.21-1.55.38-1.95.17-.41.4-.76.63-.99.23-.23.58-.46.99-.63.4-.17.94-.33 1.95-.38 1.05-.05 1.37-.06 4.05-.06zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 1.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm5-1.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                        <path d="M12 2c-2.71 0-3.05.01-4.12.06-1.07.05-1.79.23-2.42.47-.64.24-1.18.57-1.72 1.1-.54.53-.87 1.08-1.1 1.72-.24.63-.42 1.35-.47 2.42-.05 1.07-.06 1.41-.06 4.12s.01 3.05.06 4.12c.05 1.07.23 1.79.47 2.42.24.64.57 1.18 1.1 1.72.54.54 1.08.87 1.72 1.1.63.24 1.35.42 2.42.47 1.07.05 1.41.06 4.12.06s3.05-.01 4.12-.06c1.07-.05 1.79-.23 2.42-.47.64-.24 1.18-.57 1.72-1.1.54-.53.87-1.08 1.1-1.72.24-.63.42-1.35.47-2.42.05-1.07.06-1.41.06-4.12s-.01-3.05-.06-4.12c-.05-1.07-.23-1.79-.47-2.42-.24-.64-.57-1.18-1.1-1.72-.53-.54-1.08-.87-1.72-1.1-.63-.24-1.35-.42-2.42-.47C15.05 2.01 14.71 2 12 2zm0 1.5c2.68 0 3 .01 4.05.06 1.01.05 1.55.21 1.95.38.41.17.76.4.99.63.23.23.46.58.63.99.17.4.33.94.38 1.95.05 1.05.06 1.37.06 4.05s-.01 3-.06 4.05c-.05 1.01-.21 1.55-.38 1.95-.17.41-.4.76-.63.99-.23.23-.58.46-.99.63-.4.17-.94.33-1.95.38-1.05.05-1.37.06-4.05.06s-3-.01-4.05-.06c-1.01-.05-1.55-.21-1.95-.38-.41-.17-.76-.4-.99-.63-.23-.23-.46-.58-.63-.99-.17-.4-.33-.94-.38-1.95-.05-1.05-.06-1.37-.06-4.05s.01-3 .06-4.05c.05-1.01.21-1.55.38-1.95.17-.41.4-.76.63-.99.23-.23.58-.46.99-.63.4-.17.94-.33 1.95-.38 1.05-.05 1.37-.06 4.05-.06zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 1.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm5-1.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
                     </svg>
                 </a>
-
+                
                 <!-- Resume Button (Teal Outline, Teal Text) -->
                 <a href="[LINK_TO_YOUR_RESUME.PDF]" target="_blank" class="text-teal-accent border border-teal-accent px-4 py-2 rounded-full font-semibold hover:bg-teal-accent hover:text-bg-primary transition duration-200 text-sm">
                     Resume ↓
@@ -115,24 +110,23 @@
     </header>
 
     <!-- Main Content Area -->
-    <!-- ... (rest of the body content and script remains the same) -->
     <main class="container mx-auto px-6 lg:px-24 py-12">
-
+        
         <!-- Hero/About Section -->
         <section id="about" class="mb-20">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-
+                
                 <!-- Profile Image -->
                 <div class="col-span-1 flex justify-center md:justify-start">
                     <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden profile-border">
-                        <!-- Path set to ./images/profile.jpeg. Placeholder now shows dark text on light background. -->
-                        <img src="./images/profile.jpeg" onerror="this.onerror=null; this.src='https://placehold.co/224x224/F0F0F0/333333?text=PROFILE+ERROR';" alt="Profile Photo" class="w-full h-full object-cover">
+                        <!-- Path updated to point to the file in the same directory: profile.jpeg -->
+                        <img src="./profile.jpeg" onerror="this.onerror=null; this.src='https://placehold.co/224x224/F0F0F0/333333?text=PROFILE+ERROR';" alt="Profile Photo" class="w-full h-full object-cover">
                     </div>
                 </div>
-
+                
                 <!-- Biography Text & Refiner Tool -->
                 <div class="col-span-1 md:col-span-2 bio-text-container">
-
+                    
                     <!-- Editable Bio Content -->
                     <div id="bio-content">
                         <p class="text-xl leading-relaxed text-text-default mb-4">
@@ -166,7 +160,7 @@
             <h2 class="text-3xl font-heading font-bold text-text-default mb-8 border-b border-light-border pb-1 inline-block">
                 Game Programming
             </h2>
-
+            
             <!-- Example Project 1: Card background is now light gray -->
             <div class="bg-light-border p-6 rounded-lg shadow-sm mb-6">
                 <div class="flex justify-between items-center mb-4">
@@ -202,7 +196,7 @@
             <!-- AI Game Concept Generator -->
             <div class="p-6 border border-light-border bg-bg-primary rounded-lg shadow-lg">
                 <h3 class="text-2xl font-heading font-bold text-text-default mb-4 flex items-center space-x-2">
-                    <span class="text-xl text-teal-accent">✨</span>
+                    <span class="text-xl text-teal-accent">✨</span> 
                     <span>AI Game Concept Generator</span>
                 </h3>
                 <p class="text-sm text-text-default mb-4">
@@ -215,7 +209,7 @@
                         <div id="concept-loading-spinner" class="spinner hidden"></div>
                     </button>
                 </div>
-
+                
                 <!-- AI Concept Output -->
                 <div id="game-concept-output" class="mt-6 p-4 border border-light-border bg-light-border rounded-lg hidden">
                     <h4 class="text-lg font-heading font-bold text-teal-accent mb-2">New Game Concept:</h4>
@@ -235,7 +229,7 @@
 
     <script>
         // --- GEMINI API Setup ---
-        const apiKey = "";
+        const apiKey = ""; 
         const API_URL_GEMINI = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
         // Helper function for exponential backoff during fetch requests
@@ -278,9 +272,9 @@
             const originalBio = document.getElementById('bio-content').innerText.trim();
 
             if (originalBio.length < 50) {
-                outputText.innerHTML = "Please write a more detailed draft (at least 50 characters) before refining.";
-                outputDiv.classList.remove('hidden');
-                return;
+                 outputText.innerHTML = "Please write a more detailed draft (at least 50 characters) before refining.";
+                 outputDiv.classList.remove('hidden');
+                 return;
             }
 
             button.disabled = true;
@@ -289,7 +283,7 @@
             outputText.textContent = "";
 
             const systemPrompt = "You are a professional portfolio editor. Your goal is to rewrite the provided biography for a Gameplay Programmer into a single, highly polished, and compelling paragraph suitable for a modern tech portfolio. Ensure the tone is confident and professional. ONLY return the revised paragraph, no headings or extra text.";
-
+            
             const userQuery = `Refine this bio: "${originalBio}"`;
 
             const payload = {
@@ -303,7 +297,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-
+                
                 const result = await response.json();
                 const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
 
@@ -330,11 +324,11 @@
             const refinedTextElement = document.getElementById('refined-bio-text');
             const bioContentElement = document.getElementById('bio-content');
             const outputDiv = document.getElementById('refined-bio-output');
-
+            
             if (refinedTextElement.innerHTML) {
                 // Replace the content in the original bio div
                 bioContentElement.innerHTML = refinedTextElement.innerHTML;
-
+                
                 // Hide the suggestion box
                 outputDiv.classList.add('hidden');
             }
@@ -365,7 +359,7 @@
             outputText.textContent = "";
 
             const systemPrompt = "You are a professional Game Designer and Analyst. Generate a unique and modern game concept based on the user's theme. The response MUST include a 'Genre & Hook', 'Core Mechanics', and 'Modern Tech Integration' (e.g., AI NPCs, Blockchain, VR/AR). Format the output using markdown headings and bullet points.";
-
+            
             const userQuery = `Generate a detailed game concept based on the theme: ${theme}. Target platforms: PC/Console.`;
 
             const payload = {
@@ -381,7 +375,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-
+                
                 const result = await response.json();
                 const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
 
@@ -392,7 +386,7 @@
                         .replace(/^## (.*)$/gm, '<h4 class="text-lg font-bold text-teal-accent mt-4 mb-2">$1</h4>')
                         .replace(/^\* (.*)$/gm, '<li class="ml-4 list-disc text-sm">$1</li>')
                         .replace(/\n/g, '<br>');
-
+                        
                     outputText.innerHTML = htmlContent;
                     outputDiv.classList.remove('hidden');
                 } else {
