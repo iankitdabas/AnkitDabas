@@ -49,21 +49,6 @@
             color: var(--tw-colors-teal-accent);
             background-color: transparent !important;
         }
-
-        /* Style for the loading spinner */
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-top: 4px solid var(--tw-colors-teal-accent);
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
     </style>
 </head>
 <!-- Apply new primary colors to the body -->
@@ -119,37 +104,24 @@
                 <!-- Profile Image -->
                 <div class="col-span-1 flex justify-center md:justify-start">
                     <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden profile-border">
-                        <!-- Path updated to point to the file in the same directory: profile.jpeg -->
+                        <!-- Path points to the file in the same directory: profile.jpeg -->
                         <img src="./profile.jpeg" onerror="this.onerror=null; this.src='https://placehold.co/224x224/F0F0F0/333333?text=PROFILE+ERROR';" alt="Profile Photo" class="w-full h-full object-cover">
                     </div>
                 </div>
                 
-                <!-- Biography Text & Refiner Tool -->
+                <!-- Biography Text -->
                 <div class="col-span-1 md:col-span-2 bio-text-container">
                     
                     <!-- Editable Bio Content -->
                     <div id="bio-content">
                         <p class="text-xl leading-relaxed text-text-default mb-4">
-                            **Gameplay Programmer** specializing in **Game Systems and Core Logic**, focused on writing efficient, clean code and tackling new challenges in **Game Development**.
+                            Gameplay Programmer specializing in Game Systems and Core Logic, focused on writing efficient, clean code and tackling new challenges in Game Development.
                         </p>
                         <p class="text-xl leading-relaxed text-text-default">
                             I thrive in environments where creativity meets technical rigor, translating complex requirements into simple, maintainable, and high-performance solutions. Let's connect!
                         </p>
                     </div>
-
-                    <!-- AI Refiner Button -->
-                    <button id="refine-bio-button" onclick="refineBio()" class="mt-6 text-sm text-bg-primary bg-teal-accent px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition duration-200 shadow-lg flex items-center space-x-2">
-                        <span class="text-base">✨</span>
-                        <span>Refine My Bio</span>
-                        <div id="bio-loading-spinner" class="spinner hidden"></div>
-                    </button>
-
-                    <!-- AI Refiner Output -->
-                    <div id="refined-bio-output" class="mt-8 p-4 border border-light-border bg-light-border rounded-lg hidden">
-                        <h4 class="text-lg font-heading font-bold text-teal-accent mb-2">Refined Bio Suggestion:</h4>
-                        <div id="refined-bio-text" class="text-text-default text-sm leading-relaxed"></div>
-                        <button onclick="useRefinedBio()" class="mt-4 text-xs text-bg-primary bg-text-default px-3 py-1 rounded-full hover:bg-opacity-80 transition duration-200">Use This Bio</button>
-                    </div>
+                    <!-- AI Refiner Button and Output removed -->
                 </div>
             </div>
         </section>
@@ -193,31 +165,7 @@
 
             <hr class="border-t border-light-border my-8">
 
-            <!-- AI Game Concept Generator -->
-            <div class="p-6 border border-light-border bg-bg-primary rounded-lg shadow-lg">
-                <h3 class="text-2xl font-heading font-bold text-text-default mb-4 flex items-center space-x-2">
-                    <span class="text-xl text-teal-accent">✨</span> 
-                    <span>AI Game Concept Generator</span>
-                </h3>
-                <p class="text-sm text-text-default mb-4">
-                    Brainstorm your next project! Enter a theme (e.g., "cyberpunk farming") and Gemini will generate a detailed, modern game concept.
-                </p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <input type="text" id="game-theme-input" placeholder="Enter a theme (e.g., 'Roguelite strategy')" class="flex-grow p-3 border border-light-border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-accent text-text-default bg-white shadow-inner">
-                    <button onclick="generateGameConcept()" id="generate-concept-button" class="text-bg-primary bg-teal-accent px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition duration-200 shadow-md flex items-center justify-center space-x-2">
-                        <span>Generate Concept</span>
-                        <div id="concept-loading-spinner" class="spinner hidden"></div>
-                    </button>
-                </div>
-                
-                <!-- AI Concept Output -->
-                <div id="game-concept-output" class="mt-6 p-4 border border-light-border bg-light-border rounded-lg hidden">
-                    <h4 class="text-lg font-heading font-bold text-teal-accent mb-2">New Game Concept:</h4>
-                    <div id="concept-text" class="text-text-default text-sm leading-relaxed"></div>
-                </div>
-                <div id="concept-error-output" class="mt-4 text-red-600 text-sm hidden"></div>
-            </div>
-
+            <!-- AI Game Concept Generator removed -->
         </section>
 
     </main>
@@ -227,185 +175,8 @@
         <p>&copy; <span id="current-year"></span> Ankit Dabas. All Rights Reserved.</p>
     </footer>
 
+    <!-- All Gemini API logic removed -->
     <script>
-        // --- GEMINI API Setup ---
-        const apiKey = ""; 
-        const API_URL_GEMINI = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-        // Helper function for exponential backoff during fetch requests
-        async function exponentialBackoffFetch(url, options, retries = 5, delay = 1000) {
-            for (let i = 0; i < retries; i++) {
-                try {
-                    const response = await fetch(url, options);
-                    if (response.ok) {
-                        return response;
-                    }
-                    if (response.status === 429) { // Rate limit error
-                        if (i < retries - 1) {
-                            console.warn(`Rate limit hit. Retrying in ${delay / 1000}s...`);
-                            await new Promise(resolve => setTimeout(resolve, delay));
-                            delay *= 2; // Exponential backoff
-                            continue;
-                        }
-                    }
-                    throw new Error(`API request failed with status ${response.status}`);
-                } catch (error) {
-                    if (i === retries - 1) {
-                        throw error;
-                    }
-                    console.warn(`Fetch error. Retrying in ${delay / 1000}s...`);
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    delay *= 2;
-                }
-            }
-            throw new Error("API request failed after multiple retries.");
-        }
-
-
-        // --- FEATURE 1: BIO REFINER ---
-
-        async function refineBio() {
-            const button = document.getElementById('refine-bio-button');
-            const spinner = document.getElementById('bio-loading-spinner');
-            const outputDiv = document.getElementById('refined-bio-output');
-            const outputText = document.getElementById('refined-bio-text');
-            const originalBio = document.getElementById('bio-content').innerText.trim();
-
-            if (originalBio.length < 50) {
-                 outputText.innerHTML = "Please write a more detailed draft (at least 50 characters) before refining.";
-                 outputDiv.classList.remove('hidden');
-                 return;
-            }
-
-            button.disabled = true;
-            spinner.classList.remove('hidden');
-            outputDiv.classList.add('hidden');
-            outputText.textContent = "";
-
-            const systemPrompt = "You are a professional portfolio editor. Your goal is to rewrite the provided biography for a Gameplay Programmer into a single, highly polished, and compelling paragraph suitable for a modern tech portfolio. Ensure the tone is confident and professional. ONLY return the revised paragraph, no headings or extra text.";
-            
-            const userQuery = `Refine this bio: "${originalBio}"`;
-
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-            };
-
-            try {
-                const response = await exponentialBackoffFetch(API_URL_GEMINI, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                const result = await response.json();
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-
-                if (text) {
-                    outputText.innerHTML = text.replace(/\n/g, '<br><br>'); // Format newlines for HTML
-                    outputDiv.classList.remove('hidden');
-                } else {
-                    outputText.innerHTML = "Error: Could not generate refined text. Try again.";
-                    outputDiv.classList.remove('hidden');
-                }
-
-            } catch (error) {
-                console.error("Gemini API Error:", error);
-                outputText.innerHTML = "A network error occurred while reaching the AI service. Please check your connection.";
-                outputDiv.classList.remove('hidden');
-            } finally {
-                button.disabled = false;
-                spinner.classList.add('hidden');
-            }
-        }
-
-        // Function to apply the refined text back to the main bio area
-        function useRefinedBio() {
-            const refinedTextElement = document.getElementById('refined-bio-text');
-            const bioContentElement = document.getElementById('bio-content');
-            const outputDiv = document.getElementById('refined-bio-output');
-            
-            if (refinedTextElement.innerHTML) {
-                // Replace the content in the original bio div
-                bioContentElement.innerHTML = refinedTextElement.innerHTML;
-                
-                // Hide the suggestion box
-                outputDiv.classList.add('hidden');
-            }
-        }
-
-
-        // --- FEATURE 2: GAME CONCEPT GENERATOR (with Search Grounding) ---
-
-        async function generateGameConcept() {
-            const input = document.getElementById('game-theme-input');
-            const theme = input.value.trim();
-            const button = document.getElementById('generate-concept-button');
-            const spinner = document.getElementById('concept-loading-spinner');
-            const outputDiv = document.getElementById('game-concept-output');
-            const outputText = document.getElementById('concept-text');
-            const errorOutput = document.getElementById('concept-error-output');
-
-            if (!theme) {
-                errorOutput.textContent = "Please enter a theme or keyword to generate a concept.";
-                errorOutput.classList.remove('hidden');
-                return;
-            }
-
-            button.disabled = true;
-            spinner.classList.remove('hidden');
-            outputDiv.classList.add('hidden');
-            errorOutput.classList.add('hidden');
-            outputText.textContent = "";
-
-            const systemPrompt = "You are a professional Game Designer and Analyst. Generate a unique and modern game concept based on the user's theme. The response MUST include a 'Genre & Hook', 'Core Mechanics', and 'Modern Tech Integration' (e.g., AI NPCs, Blockchain, VR/AR). Format the output using markdown headings and bullet points.";
-            
-            const userQuery = `Generate a detailed game concept based on the theme: ${theme}. Target platforms: PC/Console.`;
-
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                // Use Google Search grounding to ensure the concept uses current trends
-                tools: [{ "google_search": {} }],
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-            };
-
-            try {
-                const response = await exponentialBackoffFetch(API_URL_GEMINI, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                const result = await response.json();
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-
-                if (text) {
-                    // Convert basic markdown to readable HTML structure
-                    let htmlContent = text
-                        .replace(/^### (.*)$/gm, '<h5 class="text-base font-bold text-text-default mt-4 mb-1">$1</h5>')
-                        .replace(/^## (.*)$/gm, '<h4 class="text-lg font-bold text-teal-accent mt-4 mb-2">$1</h4>')
-                        .replace(/^\* (.*)$/gm, '<li class="ml-4 list-disc text-sm">$1</li>')
-                        .replace(/\n/g, '<br>');
-                        
-                    outputText.innerHTML = htmlContent;
-                    outputDiv.classList.remove('hidden');
-                } else {
-                    errorOutput.textContent = "Error: Could not generate game concept. Try another theme.";
-                    errorOutput.classList.remove('hidden');
-                }
-
-            } catch (error) {
-                console.error("Gemini API Error:", error);
-                errorOutput.textContent = "A network error occurred while reaching the AI service. Please check your connection.";
-                errorOutput.classList.remove('hidden');
-            } finally {
-                button.disabled = false;
-                spinner.classList.add('hidden');
-            }
-        }
-
-
-        // --- UTILITY ---
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
